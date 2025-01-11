@@ -1,8 +1,9 @@
-interface ErrorPageProps {
-    message: string
-}
+import { useErrorPageStore } from "../../stores/errorPageStore"
 
-export const ErrorPage:React.FC<ErrorPageProps> = ({message}) => {
+export const ErrorPage:React.FC = () => {
+    const {
+        message
+    } = useErrorPageStore();
     return (
         <div>
             {message}

@@ -6,6 +6,7 @@ interface MainViewStoreProps {
     currentPage?: ReactNode;
     navigatePage: (registerdPageId: string) => void;
     registerPage: (pageId: string, page: ReactNode) => void;
+    initializePage: () => void;
 }
 
 export const useMainViewStore = create<MainViewStoreProps>((set, get) => {
@@ -29,6 +30,22 @@ export const useMainViewStore = create<MainViewStoreProps>((set, get) => {
                     registeredPages: updatedPages
                 }
             })
+        },
+        initializePage: () => {
+            const idlePage = get().registeredPages.get("idle");
+            if(idlePage) {
+                set(() => {
+                    return {
+                        currentPage: idlePage
+                    }
+                })
+            } else {
+                set(() => {
+                    return {
+                        currentPage: get().registeredPages.get("error")
+                    }
+                })
+            }
         }
     }
 });
