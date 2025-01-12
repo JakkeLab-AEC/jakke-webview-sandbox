@@ -6,15 +6,18 @@ interface MainViewStoreProps {
     registeredPages: Map<string, ReactNode>;
     currentPage?: ReactNode;
     hostSocket: HostSocket;
+    statusMessage: string;
     navigatePage: (registerdPageId: string) => void;
     registerPage: (pageId: string, page: ReactNode) => void;
     initializePage: () => void;
+    setStatusMessage: (message: string) => void;
 }
 
 export const useMainViewStore = create<MainViewStoreProps>((set, get) => {
     return {
         registeredPages: new Map(),
-        hostSocket: new HostSocket(),
+        hostSocket: HostSocket.instance,
+        statusMessage: "Idle",
         navigatePage: (registerdPageId: string) => {
             const page = get().registeredPages.get(registerdPageId);
             if(page) {
@@ -49,6 +52,13 @@ export const useMainViewStore = create<MainViewStoreProps>((set, get) => {
                     }
                 })
             }
+        },
+        setStatusMessage: (message: string) => {
+            set(() => {
+                return {
+                    statusMessage: message
+                }
+            })
         }
     }
 });

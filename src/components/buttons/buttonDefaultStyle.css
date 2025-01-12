@@ -1,6 +1,6 @@
 .btn-neutral {
     background-color: #90afe5;
-    height: 24;
+    height: 24px;
     color: rgb(255, 255, 255);
     align-self: center;
     font-weight: 600;
@@ -15,7 +15,7 @@
 
 .btn-positive {
     background-color: #64ABFF;
-    height: 48px;
+    height: 24px;
     color: rgb(255, 255, 255);
     align-self: center;
     font-weight: 400;
@@ -31,7 +31,7 @@
 
 .btn-negative {
     background-color: #dadada;
-    height: 48;
+    height: 24px;
     color: black;
     align-self: center;
     font-weight: 600;
